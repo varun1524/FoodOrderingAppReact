@@ -3,14 +3,10 @@ import CartItems from "./CartItems";
 
 class CartTab extends Component {
 
-    updateTotal = () => {
-        return this.props.updateTotal();
-    };
-
     render() {
 
         const {cart} = this.props;
-        const {total} = this.props;
+        let {total} = this.props;
         console.log("Total value is: "+ total.totalvalue);
 
         return (
@@ -38,7 +34,6 @@ class CartTab extends Component {
                         </div>
                         <div>
                             <label>Total:
-                                {this.updateTotal()}
                                 {total.totalvalue}
                             </label>
                         </div>

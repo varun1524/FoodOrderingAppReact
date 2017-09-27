@@ -37,6 +37,8 @@ class App extends Component {
                 state.cart.splice(index,1);
             }
         });
+        console.log(this.state.cart);
+        this.updateTotal();
     };
 
     handleAddToCart = (newItem) => {
@@ -61,12 +63,13 @@ class App extends Component {
                 });
             }
         });
+        console.log(this.state.cart);
         this.updateTotal();
     };
 
     updateTotal = () => {
         this.setState((state) => {
-            console.log(this.state.cart+"\n"+this.state.cart.length);
+            console.log(state.cart+"\n"+this.state.cart.length);
             if(this.state.cart.length>0) {
                 let total=0;
                 state.total.totalvalue = this.state.cart.every((cartitem)=>
@@ -113,7 +116,6 @@ class App extends Component {
                                                 <CartTab
                                                     cart={this.state.cart}
                                                     handleRemoveFromCart={this.handleRemoveFromCart}
-                                                    updateTotal={this.updateTotal}
                                                     total={this.state.total}
                                                 />
                                             </div>
