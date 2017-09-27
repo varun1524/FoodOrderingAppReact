@@ -36,9 +36,10 @@ class App extends Component {
             if(index!==-1) {
                 state.cart.splice(index,1);
             }
+            this.updateTotal(state);
         });
         console.log(this.state.cart);
-        this.updateTotal();
+
     };
 
     handleAddToCart = (newItem) => {
@@ -62,35 +63,33 @@ class App extends Component {
                     qty: 1
                 });
             }
+            this.updateTotal(state);
         });
         console.log(this.state.cart);
-        this.updateTotal();
     };
 
-    updateTotal = () => {
-        this.setState((state) => {
+    updateTotal = (state) => {
+        if(state.cart.length>0) {
             console.log(state.cart+"\n"+this.state.cart.length);
-            if(this.state.cart.length>0) {
-                let total=0;
-                state.total.totalvalue = this.state.cart.every((cartitem)=>
-                {
-                    total+= (cartitem.price*cartitem.qty);
-                    return total;
-                });
-                //
-                // let total = 0;
-                // for (let i = 0; i < this.state.cart.length; i++) {
-                //     console.log("price:"+this.state.cart[i]["price"]);
-                //     total += this.state.cart[i].price * this.state.cart[i].qty;
-                // }
-                console.log("total amount: "+total);
-                state.total.totalvalue = total;
-            }
-            else
+            let total=0;
+            state.total.totalvalue = state.cart.every((cartitem)=>
             {
-                state.total.totalvalue = 0;
-            }
-        });
+                total+= (cartitem.price*cartitem.qty);
+                return total;
+            });
+            //
+            // let total = 0;
+            // for (let i = 0; i < this.state.cart.length; i++) {
+            //     console.log("price:"+this.state.cart[i]["price"]);
+            //     total += this.state.cart[i].price * this.state.cart[i].qty;
+            // }
+            console.log("total amount: "+total);
+            state.total.totalvalue = total;
+        }
+        else
+        {
+            state.total.totalvalue = 0;
+        }
     };
 
     render() {
