@@ -21,9 +21,8 @@ class App extends Component {
         };
     }
 
-
     handleRemoveFromCart = (item) => {
-        var index=-1;
+        let index=-1;
         this.setState((state)=>
         {
             state.cart = this.state.cart.map((cartItem) => {
@@ -43,10 +42,9 @@ class App extends Component {
     };
 
     handleAddToCart = (newItem) => {
-        var cartData = this.state.cart;
-        var alreadyInCart = false;
+        let alreadyInCart = false;
         this.setState((state) => {
-            if(cartData.length>0) {
+            if(state.cart.length>0) {
                 state.cart = this.state.cart.map((cartitem) => {
                     if (cartitem.fooditem===newItem.fooditem) {
                         cartitem.qty+=1;
@@ -72,17 +70,11 @@ class App extends Component {
         if(state.cart.length>0) {
             console.log(state.cart+"\n"+this.state.cart.length);
             let total=0;
-            state.total.totalvalue = state.cart.every((cartitem)=>
+            state.cart.every((cartitem)=>
             {
                 total+= (cartitem.price*cartitem.qty);
                 return total;
             });
-            //
-            // let total = 0;
-            // for (let i = 0; i < this.state.cart.length; i++) {
-            //     console.log("price:"+this.state.cart[i]["price"]);
-            //     total += this.state.cart[i].price * this.state.cart[i].qty;
-            // }
             console.log("total amount: "+total);
             state.total.totalvalue = total;
         }
@@ -93,6 +85,13 @@ class App extends Component {
     };
 
     render() {
+
+        const totalstyle={
+            fontsize:500,
+            color:'blue',
+            align:'center',
+        };
+
         return (
             <div>
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -115,10 +114,12 @@ class App extends Component {
                                                 <CartTab
                                                     cart={this.state.cart}
                                                     handleRemoveFromCart={this.handleRemoveFromCart}
-                                                    total={this.state.total}
                                                 />
                                             </div>
                                         </div>
+                                    </div>
+                                    <div className="text-center">
+                                        <label style={totalstyle} >Total: {this.state.total.totalvalue}</label>
                                     </div>
                                 </div>
                             </div>

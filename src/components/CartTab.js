@@ -6,8 +6,6 @@ class CartTab extends Component {
     render() {
 
         const {cart} = this.props;
-        let {total} = this.props;
-        console.log("Total value is: "+ total.totalvalue);
 
         return (
             <div className="container-fluid">
@@ -31,11 +29,6 @@ class CartTab extends Component {
                                     );
                                 })
                             }
-                        </div>
-                        <div>
-                            <label>Total:
-                                {total.totalvalue}
-                            </label>
                         </div>
                     </div>
                 </div>
