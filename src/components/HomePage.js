@@ -53,8 +53,9 @@ class HomePage extends Component {
                                                             <div className="card-body">
 
                                                                 {/*This way we can transfer the initialstate to the CartItems
-                                                                and we can map state to props there. It works perfectly.
-                                                                <CartItems key={1}/>*/}
+                                                                and we can map state to props there. It works perfectly*/}
+
+                                                                <CartItems />
 
                                                                 {/*Quantity change does not appear on UI
                                                                 in the following way
@@ -73,7 +74,7 @@ class HomePage extends Component {
 
                                                                 {/*In order to show quantity update on UI, we can pass
                                                                 qty of item separately*/}
-                                                                {
+                                                                {/*{
                                                                     this.props.stateArray.cart.map((item,index) => {
                                                                         return(
                                                                             <CartItems
@@ -83,7 +84,7 @@ class HomePage extends Component {
                                                                             />
                                                                         );
                                                                     })
-                                                                }
+                                                                }*/}
 
                                                             </div>
                                                         </div>
@@ -106,9 +107,7 @@ class HomePage extends Component {
 }
 
 function mapStateToProps(stateArray) {
-    console.log( Object.values(stateArray)[0]);
-    console.log( Object.values(stateArray)[1]);
-    console.log( Object.values(stateArray)[2]);
+    console.log(stateArray);
     // const inventoryArr = Object.keys(state.inventory).map((item) => (
     //     {
     //         'item' : item,
