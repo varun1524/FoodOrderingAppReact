@@ -67,7 +67,6 @@ class HomePage extends Component {
 
     updateTotal = (state) => {
         if(state.cart.length>0) {
-            console.log(state.cart+"\n"+this.state.cart.length);
             let total=0;
             state.cart.every((cartitem)=>
             {
@@ -102,11 +101,11 @@ class HomePage extends Component {
                                                         <div className="row justify-content-md-center">
                                                                 <div className="card-body">
                                                                     {
-                                                                        this.state.inventory.map((inventory,index) => {
+                                                                        this.state.inventory.map((item,index) => {
                                                                             return(
                                                                                 <MenuItems
                                                                                 key={index}
-                                                                                item={inventory}
+                                                                                item={item}
                                                                                 handleAddToCart = {this.handleAddToCart}
                                                                             />
                                                                         );
@@ -130,11 +129,11 @@ class HomePage extends Component {
                                                         <div className="row justify-content-md-center">
                                                                 <div className="card-body">
                                                                     {
-                                                                        this.state.cart.map((cart,index) => {
+                                                                        this.state.cart.map((item,index) => {
                                                                         return(
                                                                             <CartItems
                                                                                 key={index}
-                                                                                item={cart}
+                                                                                item={item}
                                                                                 handleRemoveFromCart = {this.handleRemoveFromCart}
                                                                             />
                                                                         );
